@@ -131,4 +131,4 @@ def launch(portfolio):
 
 
 if __name__ == '__main__':
-    launch(portfolio={'btc': 1})
+    launch(portfolio={'bnb': 6, 'eth': 1})
