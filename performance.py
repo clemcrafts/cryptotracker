@@ -33,14 +33,14 @@ class Performance:
         """
         for asset in self.portfolio.keys():
             self.load_crypto_prices(
-                '{}.csv'.format(asset), self.asset_prices[asset])
+                'data/{}.csv'.format(asset), self.asset_prices[asset])
 
     def load_crypto_market_cap(self, days_to_consider_from_today=10):
         """
         Loading total crypto market cap.
         n.b: entered manually, to be automated
         """
-        with open('total.csv', 'r') as file:
+        with open('data/total.csv', 'r') as file:
             for line, row in enumerate(csv.reader(file)):
                 if line == 0:
                     continue
