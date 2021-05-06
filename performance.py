@@ -29,7 +29,8 @@ class Performance:
         Loading the data from yahoo finance data format.
         n.b: As an example, for Bitcoin you can go to:
         https://finance.yahoo.com/quote/BTC-USD/history?p=BTC-USD
-        And "download" the file that you can move to this directory.
+        And "download" the file that you can move to the data directory with
+        the name matching the asset in your portfolio dictionary.
         """
         for asset in self.portfolio.keys():
             self.load_crypto_prices(
