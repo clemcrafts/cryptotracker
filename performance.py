@@ -50,8 +50,7 @@ class Performance:
     @staticmethod
     def load_crypto_prices(file, asset, days_to_consider_from_today=10):
         """
-        Loading crypto
-        :return:
+        Loading crypto prices.
         """
         with open(file, 'r') as file:
             for line, row in enumerate(reversed(list(csv.reader(file)))):
@@ -95,14 +94,12 @@ class Performance:
 
     def plot_performance(self):
         """
-
-        :return:
+        Plot the performance on 10 days.
         """
         days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         plt.plot(days, self.portfolio_performance, 'r-.')
         plt.plot(days, self.crypto_performance, 'b-.')
         plt.title("Stockomatics Portfolio and Total Crypto Market Performance", fontweight='bold')
-
         plt.xlabel("Days", fontweight='bold')
         plt.ylabel("Cumulative Performance (%)", fontweight='bold')
         plt.scatter(days, self.portfolio_performance, c='r', label='Stockomatics Portfolio')
