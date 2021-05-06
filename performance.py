@@ -130,9 +130,4 @@ def launch(portfolio):
 
 
 if __name__ == '__main__':
-    launch(
-        portfolio={'btc': 1.43,
-                   'eth': 33,
-                   'ada': 46000,
-                   'theta': 668,
-                   'dot': 31})
+    launch(portfolio={'btc': 1.2, 'ada': 2})
