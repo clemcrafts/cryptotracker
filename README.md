@@ -21,11 +21,12 @@ python performance.py
 Adapt for your need in `performance.py`:
 
 ```
-performance = Performance(portfolio={'btc': 1.43,
-                                     'eth': 33,
-                                     'ada': 46000,
-                                     'theta': 668,
-                                     'dot': 31})
+    launch(
+        portfolio={'btc': 1.43,
+                   'eth': 33,
+                   'ada': 46000,
+                   'theta': 668,
+                   'dot': 31})
 ```
 
 Make sure the data is available for your coins in csv format.

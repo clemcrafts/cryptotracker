@@ -44,13 +44,15 @@ class Performance:
             for line, row in enumerate(csv.reader(file)):
                 if line == 0:
                     continue
-                print(row)
                 self.crypto_prices.append(float(row[1]))
 
     @staticmethod
     def load_crypto_prices(file, asset, days_to_consider_from_today=10):
         """
         Loading crypto prices.
+        :param str file: the file to load from.
+        :param str asset: the asset considered (e.g: btc)
+        :param int days_to_consider_from_today: number of days to look at.
         """
         with open(file, 'r') as file:
             for line, row in enumerate(reversed(list(csv.reader(file)))):
@@ -90,7 +92,6 @@ class Performance:
         for crypto_price in reversed(self.crypto_prices):
             self.crypto_performance.append(
                 100*(crypto_price - initial_price)/initial_price)
-        print(self.crypto_performance)
 
     def plot_performance(self):
         """
@@ -99,24 +100,39 @@ class Performance:
         days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         plt.plot(days, self.portfolio_performance, 'r-.')
         plt.plot(days, self.crypto_performance, 'b-.')
-        plt.title("Stockomatics Portfolio and Total Crypto Market Performance", fontweight='bold')
+        plt.title(
+            "Stockomatics Portfolio and Total Crypto Market Performance",
+            fontweight='bold')
         plt.xlabel("Days", fontweight='bold')
         plt.ylabel("Cumulative Performance (%)", fontweight='bold')
-        plt.scatter(days, self.portfolio_performance, c='r', label='Stockomatics Portfolio')
-        plt.scatter(days, self.crypto_performance, c='b', label='Crypto Market Capitalization')
+        plt.scatter(
+            days, self.portfolio_performance,
+            c='r', label='Stockomatics Portfolio')
+        plt.scatter(
+            days, self.crypto_performance,
+            c='b', label='Crypto Market Capitalization')
         plt.legend()
-
         plt.show()
 
-if __name__ == '__main__':
-    performance = Performance(portfolio={'btc': 1.43,
-                                         'eth': 33,
-                                         'ada': 46000,
-                                         'theta': 668,
-                                         'dot': 31})
+def launch(portfolio):
+    """
+    launching the analysis.
+    :param dict portfolio: the portfolio to analyse.
+    e.g: {'btc': 2, 'eth': 12}
+    """
+    performance = Performance(portfolio)
     performance.load_prices()
     performance.get_porfolio_prices()
     performance.get_porfolio_performance()
     performance.load_crypto_market_cap()
     performance.get_crypto_performance()
     performance.plot_performance()
+
+
+if __name__ == '__main__':
+    launch(
+        portfolio={'btc': 1.43,
+                   'eth': 33,
+                   'ada': 46000,
+                   'theta': 668,
+                   'dot': 31})
