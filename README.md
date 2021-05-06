@@ -1,4 +1,4 @@
-# cryptotracker
+# Cryptotracker
 A performance tracker for crypto portfolio
 
 ## Install
