@@ -1,6 +1,8 @@
 # Cryptotracker
 A performance tracker for crypto portfolio
 
+![alt tag](https://postimg.cc/Lq9kc7qP)
+
 ## Install
 
 ```
